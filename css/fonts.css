@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'sourgummy';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;  
+  src: url('../fonts/sourgummy/SourGummy-VariableFont.ttf') format('truetype');
+    }
+
+@font-face {
+  font-family: 'Sora';
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;  
+  src: url('../fonts/sora/Sora-VariableFont_wght.ttf') format('truetype');
+  }
