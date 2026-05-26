@@ -3,21 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktail API</title>
+    <title>Schweizer Seen</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.14/dist/dotlottie-wc.js"  type="module" ></script>
 </head>
 <body>
     <header>
-        <h1>Vorlage für interaktive Medien II - Test</h1>
+        <h1>Und wo schwimmst du heute?</h1>
+        <h2>Dein Wassertemperatur Guide</h2>
 
     </header>
-    <main>
-        <h2>Main Content</h2>
-        <p>This is the main content of the page.</p>
+    <main class="container_fluss">
+
+       <!-- Pins -->
+        <div class="karte">
+            <img src="assets/karte_schweiz.png" alt="Karte der Schweiz" class="map">
+
+            <button class="pin" id="pin_reuss">
+                 <img src="assets/pin_gelb.png" alt="Pin Reuss">
+            </button>
+            <button class="pin" id="pin_aare">
+                <img src="assets/pin_gelb.png" alt="Pin Aare">
+            </button>
+            <button class="pin" id="pin_linth">
+                <img src="assets/pin_gelb.png" alt="Pin Linth">
+            </button>
+            <button class="pin" id="pin_rhone">
+                <img src="assets/pin_gelb.png" alt="Pin Rhone">
+            </button>
+            <button class="pin" id="pin_rhein">
+                <img src="assets/pin_gelb.png" alt="Pin Rhein">
+            </button>
+       
+
+       <!-- PopUp Infobox -->
+       <div class="infobox" id="infobox">
+            <button class="infobox_close" id="infobox_close">✕</button>
+            <h1 id="infobox_name">Flussname</h1>
+            <h4>Aktuelle Temperatur</h4>
+            
+            <div class="infobox_grid">
+                <h2 id="grid_wasser">Wasser</h2>
+                <h2 id="grid_wassertemp">XX°C</h2>
+
+                <h2 id="grid_luft">Luft</h2>
+                <h2 id="grid_lufttemp">XX°C</h2>
+            </div>
+       </div>
 
     </main>
     <footer>
-        <p>This is the footer of the page.</p>
+        <img src="assets/footer_see.png" alt="wasser">
+   
+        <dotlottie-wc
+        src="https://lottie.host/a9f3d46a-0606-4140-b1db-2c520276dd65/QWC45xjVVF.lottie"
+        style="width: 300px;height: 300px"
+        autoplay
+        loop
+        ></dotlottie-wc>
+
+        <p>© Nadine Steiner | IM2 | FHGR</p>
 
     </footer>
     <script src="js/script.js" type="module"></script>
