@@ -1,11 +1,145 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import "reset.css";
+@import "fonts.css";
+
+html  {scroll-behavior: smooth; } 
+
+/*** Allgemeines Dokument ***/
+:root {
+ /*farben*/
+ --color1:#04B2D9;
+ --color2:#049DD9;
+ --color3:#035AA6;
+ --color4:#BFE4F2;
+ --accent:#F2C438;
+ --surface:#FAF5E6;
+
+ --text-1-color:#000000;
+ --text-2-color:#FFFFFF ; 
+
+  /*abstände*/
+ --ga-large: 6rem;
+ --ga-medium: 2rem;
+ --ga-small: 0.5rem;
+}
+
+body { 
+  background-color: var(--text-2-color); 
+  color:var(--text-1-color);
+}
+
+/*Schriften 'Sourgummy'*/
+h1, h2 {
+  font-family: 'sourgummy', sans-serif; 
+  font-style: normal;
+  line-height: 1.2; 
+}
+
+h1 {font-size: 3rem;font-weight: 700;color:var(--color3);}
+h2 {font-size: 2.25rem;font-weight: 600;color: var(--color2);}
+
+
+/*Schriften 'Sora'*/
+h3, h4, p {
+  font-family: 'sora', sans-serif;  
+  font-style: normal;
+  line-height: 1.2; 
+}
+
+h3 {font-size: 2rem;font-weight: 400;}
+h4 {font-size: 1.25rem;font-weight: 400; color: var(--surface);}
+p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
+
+
+/*** Die Karte ***/
+.karte {
+  position: relative; /*Ankerpunkt Elemente*/ 
+  display: inline-block;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 3px solid red; /* ← nur zum Testen! */
+}
+
+.map { 
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 3px solid rgb(17, 126, 26); /* ← nur zum Testen! */
+}
+
+.container_fluss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--ga-medium);
+}
+
+/*** Die Pins ***/
+.pin img {
+  object-fit: contain;
+  height: 30px;
+  width: 30px; 
+}
+
+.pin {
+  position: absolute;
+  background: none;
+  border: none;
+  transform: translate(-50%, -100%) /*** test ***/
+}
+
+#pin_reuss  { top: 25%; left: 54%; }
+#pin_aare   { top: 28%; left: 38%; }
+#pin_linth  { top: 33%; left: 69%; }
+#pin_rhone  { top: 70%; left: 43%; }
+#pin_rhein  { top: 46%; left: 75%; }
+
+/*** Das Popup ***/
+.infobox {
+  position: absolute;
+  background-color: var(--color3);
+  color: var(--text-2-color);
+  border-radius: 1rem;
+  padding: var(--ga-medium);
+  bottom: 5%; 
+  right: 5%;
+  min-width: 200px;
+  box-shadow: 0px 4px 10px var(--color3);
+    
+
+  h1 {color:var(--surface); margin: 0; margin-top: 1.5rem; }
+  h2 {color: var(--surface);margin: 0; font-weight:normal;}
+  h4 {color: var(--color4);margin: 0; margin-bottom: 1rem;}
+}
+
+.infobox_grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.infobox_close { 
+  position: absolute;
+  background: none;
+  border: none;
+  color: var(--accent);
+  top: 15px;
+  right: 20px;
 }
 
 
-body {
-    background-color: pink;
-}
 
+/*** für alles bis einschliesslich 600px ***/
+@media (max-width: 600px) {
+  :root { 
+    --ga-large: 3rem;
+    --ga-medium: 1rem;
+    --ga-small: 0.9rem;
+  }
+
+  /* Schriften */
+  h1 { font-size: 2rem; font-weight: 700; }
+  h2 { font-size: 1.5rem; font-weight: 600; }
+  h3 { font-size: 1.25rem; font-weight: 400; }
+  h4 { font-size: 0.9rem; font-weight: 400; }
+  p { font-size: 0.6rem; font-weight: 400; color: var(--color4); }
+}
