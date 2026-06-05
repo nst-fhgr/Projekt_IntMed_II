@@ -53,9 +53,9 @@ p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
 /*** Die Karte ***/
 .karte {
   position: relative; /*Ankerpunkt Elemente*/ 
-  display: inline-block;
-  width: 100%;
-  max-width: 1000px;
+  display: block;
+  width: 80%;
+  max-width: 2000px; /* grösse karte */ 
   margin: 0 auto;
   border: 3px solid red; /* ← nur zum Testen! */
 }
@@ -71,14 +71,13 @@ p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--ga-medium);
 }
 
 /*** Die Pins ***/
 .pin img {
   object-fit: contain;
-  height: 30px;
-  width: 30px; 
+  height: 40px;
+  width: 40px; 
 }
 
 .pin {
@@ -88,11 +87,12 @@ p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
   transform: translate(-50%, -100%) /*** test ***/
 }
 
-#pin_reuss  { top: 25%; left: 54%; }
-#pin_aare   { top: 28%; left: 38%; }
-#pin_linth  { top: 33%; left: 69%; }
-#pin_rhone  { top: 70%; left: 43%; }
-#pin_rhein  { top: 46%; left: 75%; }
+/* Platzierung Pins*/
+#pin_reuss  { top: 26%; left: 54%; }
+#pin_aare   { top: 33%; left: 38%; }
+#pin_linth  { top: 36%; left: 65%; }
+#pin_rhone  { top: 69%; left: 43%; }
+#pin_rhein  { top: 49%; left: 70%; }
 
 /*** Das Popup ***/
 .infobox {
@@ -103,8 +103,9 @@ p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
   padding: var(--ga-medium);
   bottom: 5%; 
   right: 5%;
-  min-width: 200px;
+  width: 280px;
   box-shadow: 0px 4px 10px var(--color3);
+  display: none; /* Nicht sichtbar, erst bei Klick auf Pin via js-Befehl */
     
 
   h1 {color:var(--surface); margin: 0; margin-top: 1.5rem; }
@@ -187,3 +188,7 @@ footer dotlottie-wc {
   h4 { font-size: 0.9rem; font-weight: 400; }
   p { font-size: 0.6rem; font-weight: 400; color: var(--color4); }
 }
+ //***
+.infobox {
+  width: 180px; !!! 
+}*/// 
