@@ -49,6 +49,26 @@ h3 {font-size: 2rem;font-weight: 400;}
 h4 {font-size: 1.25rem;font-weight: 400; color: var(--surface);}
 p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
 
+/*** Header ***/
+
+header {
+  position: relative;
+  padding: var(--ga-medium);
+  padding-bottom: 0;
+}
+
+.sonnenschirm {
+  position: absolute;
+  top: 80px;
+  right: -200px;
+  width: 600px;
+  pointer-events: none;
+  opacity: 0.6;
+  transform: scaleX(-1); 
+  transform: rotate(-30deg); 
+
+ 
+}
 
 /*** Die Karte ***/
 .karte {
@@ -88,11 +108,25 @@ p {font-size: 0.75rem;font-weight: 400;color: var(--color4);}
 }
 
 /* Platzierung Pins*/
-#pin_reuss  { top: 26%; left: 54%; }
+#pin_reuss  { top: 32%; left: 53%; }
 #pin_aare   { top: 33%; left: 38%; }
 #pin_linth  { top: 36%; left: 65%; }
 #pin_rhone  { top: 69%; left: 43%; }
 #pin_rhein  { top: 49%; left: 70%; }
+
+/* pin hover */
+.pin_hover {
+  display: none;
+}
+
+.pin:hover .pin_normal {
+  display: none;
+}
+
+.pin:hover .pin_hover {
+  display: block;
+}
+
 
 /*** Das Popup ***/
 .infobox {
