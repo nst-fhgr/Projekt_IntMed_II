@@ -104,15 +104,15 @@ const seen = {
     lat: 46.45, lon: 6.56
   },
   neuenburgersee: {
-    name: "Neuenburgersee",
+    name: "Neuen-<br>burgersee",
     lat: 46.88, lon: 6.87
   },
   vierwaldstaettersee: {
-    name: "Vierwaldstättersee",
+    name: "Vierwald-<br>stättersee",
     lat: 46.97, lon: 8.46
   },
   lago_maggiore: {
-    name: "Lago Maggiore",
+    name: "Lago<br>Maggiore",
     lat: 46.06, lon: 8.72
   },
   bodensee: {
@@ -125,7 +125,7 @@ const seen = {
   async function zeigeInfoboxSee(seeKey) {
   const see = seen[seeKey];
 
-  document.getElementById("infobox_name").textContent    = see.name;
+  document.getElementById("infobox_name").innerHTML = see.name; // angepasst, damit Seenamen Umbruch erhalten 
   document.getElementById("grid_wassertemp").textContent = "…°C";
   document.getElementById("grid_lufttemp").textContent   = "…°C";
   document.getElementById("infobox").style.display       = "block";
