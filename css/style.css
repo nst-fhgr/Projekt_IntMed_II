@@ -107,12 +107,19 @@ header {
   transform: translate(-50%, -100%) /*** test ***/
 }
 
-/* Platzierung Pins*/
+/* Platzierung Fluss Pins*/
 #pin_reuss  { top: 32%; left: 53%; }
 #pin_aare   { top: 33%; left: 38%; }
 #pin_linth  { top: 36%; left: 65%; }
 #pin_rhone  { top: 69%; left: 43%; }
 #pin_rhein  { top: 49%; left: 70%; }
+
+/* latzierung Seen Pins*/
+#pin_genfersee            { top: 72%; left: 22%; }
+#pin_neuenburgersee       { top: 58%; left: 24%; }
+#pin_vierwaldstaettersee  { top: 44%; left: 52%; }
+#pin_lago_maggiore        { top: 75%; left: 58%; }
+#pin_bodensee             { top: 22%; left: 72%; }
 
 /* pin hover */
 .pin_hover {
@@ -128,7 +135,37 @@ header {
 }
 
 
-/*** Das Popup ***/
+/*** toggle ***/
+.toggle_container {
+  display: flex;
+  gap: var(--ga-small);
+  margin-top: var(--ga-small);
+}
+
+.toggle_btn {
+  font-family: 'sora', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  border: 2px solid var(--color3);
+  background: transparent;
+  color: var(--color3);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.toggle_btn.active {
+  background-color: var(--color3);
+  color: var(--text-2-color);
+}
+
+.toggle_btn:hover:not(.active) {
+  background-color: var(--color4);
+}
+
+
+/*** Das Popup/ Infobox***/
 .infobox {
   position: absolute;
   background-color: var(--color3);
