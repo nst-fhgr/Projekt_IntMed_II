@@ -77,14 +77,12 @@ header {
   width: 80%;
   max-width: 2000px; /* grösse karte */ 
   margin: 0 auto;
-  border: 3px solid red; /* ← nur zum Testen! */
 }
 
 .map { 
   width: 100%;
   height: auto;
   display: block;
-  border: 3px solid rgb(17, 126, 26); /* ← nur zum Testen! */
 }
 
 .container_fluss {
@@ -262,22 +260,104 @@ footer p {
 
 
 
-/*** für alles bis einschliesslich 600px ***/
+/*---Mobile --- 600px ***/
 @media (max-width: 600px) {
-  :root { 
-    --ga-large: 3rem;
+ 
+  /*  Abstände  */
+  :root {
+    --ga-large:  3rem;
     --ga-medium: 1rem;
-    --ga-small: 0.9rem;
+    --ga-small:  0.5rem;
+  }
+ 
+  /*  Schriften  */
+  h1 { font-size: 1.75rem; font-weight: 700; }
+  h2 { font-size: 1.25rem; font-weight: 600; }
+  h3 { font-size: 1.1rem;  font-weight: 400; }
+  h4 { font-size: 0.85rem; font-weight: 400; }
+  p  { font-size: 0.6rem;  font-weight: 400; color: var(--color4); }
+ 
+  /* --- Header --- */
+  header {
+    padding: var(--ga-medium);
+    padding-top: 1rem;
+    padding-bottom: var(--ga-small);
+  }
+ 
+  .sonnenschirm {
+    width: 180px;
+    top: 10px;
+    right: -40px;
+    opacity: 0.35;
+  }
+ 
+  .toggle_container {
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+ 
+  .toggle_btn {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+  }
+ 
+  .karte {
+    width: 100%;
   }
 
-  /* Schriften */
-  h1 { font-size: 2rem; font-weight: 700; }
-  h2 { font-size: 1.5rem; font-weight: 600; }
-  h3 { font-size: 1.25rem; font-weight: 400; }
-  h4 { font-size: 0.9rem; font-weight: 400; }
-  p { font-size: 0.6rem; font-weight: 400; color: var(--color4); }
+  .container_karte {
+    padding-bottom: 220px;
+  }
+ 
+
+  .pin img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .infobox {
+    position: fixed;
+    bottom: 0;
+    right: 1;
+    width: 27%;
+    max-height: 40vh;
+    overflow-y: auto;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1.25rem var(--ga-medium) 1.5rem;
+    box-shadow: 0 -4px 20px rgba(3, 90, 166, 0.35);
+  }
+ 
+  .infobox h1 { font-size: 1.5rem; margin-top: 1rem; }
+  .infobox h2 { font-size: 1rem; }
+  .infobox h4 { font-size: 0.75rem; margin-bottom: 0.5rem; }
+ 
+  .infobox_grid {
+    grid-template-columns: 1fr auto;
+    padding-right: 0.5rem;
+    gap: 0.25rem 1rem;
+  }
+ 
+  .infobox_close {
+    top: 12px;
+    right: 16px;
+    font-size: 1.1rem;
+  }
+ 
+  /* --- Footer --- */
+  .footer_wasser {
+    height: 120px;
+  }
+ 
+  footer dotlottie-wc {
+    width: 70px !important;
+    height: 70px !important;
+    bottom: 20px;
+    left: 3%;
+  }
+ 
+  footer p {
+    font-size: 0.55rem;
+    right: 0.75rem;
+    bottom: 6px;
+  }
 }
- //***
-.infobox {
-  width: 180px; !!! 
-}*/// 

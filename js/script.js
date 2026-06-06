@@ -1,5 +1,5 @@
-/** FLÜSSE -- Api einbinden **/
 
+/** FLÜSSE -- Api einbinden **/
   // Daten für jeden Fluss 
   const fluesse = {
     rhone: {
@@ -101,38 +101,48 @@
 const seen = {
   genfersee: {
     name: "Genfersee",
+    apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2026",
     lat: 46.45, lon: 6.56
   },
   neuenburgersee: {
-    name: "Neuen-<br>burgersee",
+    name: "Neuenburger-<br>see",
+    apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2154",
     lat: 46.88, lon: 6.87
   },
   vierwaldstaettersee: {
     name: "Vierwald-<br>stättersee",
+    apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2025",
     lat: 46.97, lon: 8.46
   },
   lago_maggiore: {
     name: "Lago<br>Maggiore",
+    apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2022",
     lat: 46.06, lon: 8.72
   },
   bodensee: {
     name: "Bodensee",
+    apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2032",
     lat: 47.60, lon: 9.47
   }
 };
 
  // Infobox anzeigen
-  async function zeigeInfoboxSee(seeKey) {
+async function zeigeInfoboxSee(seeKey) {
   const see = seen[seeKey];
 
-  document.getElementById("infobox_name").innerHTML = see.name; // angepasst, damit Seenamen Umbruch erhalten 
+  document.getElementById("infobox_name").innerHTML      = see.name;
   document.getElementById("grid_wassertemp").textContent = "…°C";
   document.getElementById("grid_lufttemp").textContent   = "…°C";
   document.getElementById("infobox").style.display       = "block";
 
-  const luftTemp = await fetchLuftTemp(see.lat, see.lon);
-  document.getElementById("grid_wassertemp").textContent = "n/a"; // keine Hydro-API für Seen
-  document.getElementById("grid_lufttemp").textContent   = luftTemp ? `${luftTemp}°C` : "n/a";
+  // NEU: beide APIs gleichzeitig laden
+  const [wasserTemp, luftTemp] = await Promise.all([
+    fetchWasserTemp(see.apiUrl),
+    fetchLuftTemp(see.lat, see.lon)
+  ]);
+
+  document.getElementById("grid_wassertemp").textContent = wasserTemp ? `${wasserTemp}°C` : "-";
+  document.getElementById("grid_lufttemp").textContent   = luftTemp   ? `${luftTemp}°C`   : "n/a";
 }
 
   // Seen Pins verbinden
