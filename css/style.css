@@ -115,11 +115,11 @@ header {
 #pin_rhein  { top: 49%; left: 70%; }
 
 /* latzierung Seen Pins*/
-#pin_genfersee            { top: 72%; left: 22%; }
-#pin_neuenburgersee       { top: 58%; left: 24%; }
-#pin_vierwaldstaettersee  { top: 44%; left: 52%; }
-#pin_lago_maggiore        { top: 75%; left: 58%; }
-#pin_bodensee             { top: 22%; left: 72%; }
+#pin_genfersee            { top: 63%; left: 17%; }
+#pin_neuenburgersee       { top: 43%; left: 23%; }
+#pin_vierwaldstaettersee  { top: 43%; left: 57%; }
+#pin_lago_maggiore        { top: 78%; left: 60%; }
+#pin_bodensee             { top: 18%; left: 73%; }
 
 /* pin hover */
 .pin_hover {
@@ -144,7 +144,7 @@ header {
 
 .toggle_btn {
   font-family: 'sora', sans-serif;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0.3rem 1rem;
   border-radius: 2rem;
@@ -161,9 +161,19 @@ header {
 }
 
 .toggle_btn:hover:not(.active) {
-  background-color: var(--color4);
+  background-color: var(--accent);
 }
 
+/* Pins aktiv/ inaktiv bei aktiviertem Toggle */ 
+#gruppe_fluesse,
+#gruppe_seen {
+  display: none;
+}
+
+#gruppe_fluesse.visible,
+#gruppe_seen.visible {
+  display: contents;
+}
 
 /*** Das Popup/ Infobox***/
 .infobox {
