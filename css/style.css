@@ -65,9 +65,7 @@ header {
   pointer-events: none;
   opacity: 0.6;
   transform: scaleX(-1); 
-  transform: rotate(-30deg); 
-
- 
+  transform: rotate(-30deg);  
 }
 
 /*** Die Karte ***/
@@ -284,13 +282,6 @@ footer p {
     padding-bottom: var(--ga-small);
   }
  
-  .sonnenschirm {
-    width: 180px;
-    top: 10px;
-    right: -40px;
-    opacity: 0.35;
-  }
- 
   .toggle_container {
     gap: 0.4rem;
     margin-top: 0.75rem;
@@ -359,5 +350,24 @@ footer p {
     font-size: 0.55rem;
     right: 0.75rem;
     bottom: 6px;
+  }
+}
+
+/* Sonnenschirm - Anpassung, Resposiv, damit der Sonneschirm nicht die Karte bedeckt*/ 
+/* Tablet */
+@media (max-width: 1024px) {
+  .sonnenschirm {
+    width: 350px;
+    right: -120px;
+    top: 60px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .sonnenschirm {
+    width: 200px;
+    right: -70px;
+    top: 40px;
   }
 }
