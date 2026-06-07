@@ -93,7 +93,7 @@ Wird für alle 10 Standorte (Flüsse + Seen) verwendet.
 
 - Wassertemperatur für Seen nicht verfügbar (keine funktionierende öffentliche JSON-API gefunden)
 - Pin-Positionen auf der Karte sind in `%`-Werten definiert und müssen bei Kartenänderungen manuell in `style.css` angepasst werden
-- Responsivität Sonnenschirm: Der rein dekorativ Sonnenschirm im Header ist absolut positioniert und überlappt auf kleineren Bildschirmen die Karte. Das Problem wurde mit unterschiedlichen Grössen pro Breakpoint (max-width: 1024px und max-width: 600px) teilweise entschärft, ist aber nicht perfekt gelöst. Rückblickend wäre ein anderes Design sinnvoller gewesen oder eine Anzeige nur bei Desktop-Layout
+- Responsivität Sonnenschirm: Der rein dekorativ Sonnenschirm im Header ist absolut positioniert und überlappt auf kleineren Bildschirmen die Karte. Das Problem wurde mit unterschiedlichen Grössen pro Breakpoint teilweise entschärft, ist aber nicht perfekt gelöst. Rückblickend wäre ein anderes Design sinnvoller gewesen oder eine Anzeige nur bei Desktop-Layout
 - Verbesserungsideen: Flüsse und Seen sind als einzelne gezeichnete Elemente auf der Karte vorhanden. Eine schöne Erweiterung wäre gewesen, das aktive Element beim anklicken visuell hervorzuheben und eine Benennungen auf der Karte direkt für bessere Orientierung
 
 ---
@@ -107,8 +107,8 @@ Wird für alle 10 Standorte (Flüsse + Seen) verwendet.
 | [api.existenz.ch](https://api.existenz.ch) | Wassertemperatur Flüsse (Quelle: BAFU) |
 | [Open-Meteo](https://open-meteo.com/) | Lufttemperatur |
 | [LottieFiles dotlottie-wc](https://lottiefiles.com/) | Footer-Animation |
-| Schriften: Sourgummy, Sora | via fonts.css |
+| Schriften: Sourgummy, Sora | via googlefonts, fonts.css |
 
 ---
 
-*© Nadine Steiner | Semesterprojekt IM2 | FHGR*
+*© nadine.steiner@stud.fhgr.ch | Semesterprojekt IM2 | FHGR*

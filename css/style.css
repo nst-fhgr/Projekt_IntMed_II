@@ -295,7 +295,7 @@ footer p {
   }
 
   .container_karte {
-    padding-bottom: 220px;
+    padding-bottom: 100px;
   }
  
 
@@ -308,8 +308,8 @@ footer p {
     position: fixed;
     bottom: 0;
     right: 1;
-    width: 27%;
-    max-height: 40vh;
+    width: 31%;
+    max-height: 50vh;
     overflow-y: auto;
     border-radius: 1rem 1rem 0 0;
     padding: 1.25rem var(--ga-medium) 1.5rem;
@@ -346,8 +346,8 @@ footer p {
  
   footer p {
     font-size: 0.55rem;
-    right: 0.75rem;
-    bottom: 6px;
+    right: 3rem;
+    bottom: 15px;
   }
 }
 
