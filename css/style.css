@@ -31,7 +31,8 @@ body {
 }
 
 main.container_karte {
-  flex: 1; /* NEU – nimmt den ganzen freien Platz ein */
+  flex: 1; 
+  position: relative;
 }
 
 /*Schriften 'Sourgummy'*/
@@ -117,7 +118,7 @@ header {
 #pin_rhone  { top: 69%; left: 43%; }
 #pin_rhein  { top: 49%; left: 70%; }
 
-/* latzierung Seen Pins*/
+/* Platzierung Seen Pins*/
 #pin_genfersee            { top: 63%; left: 17%; }
 #pin_neuenburgersee       { top: 43%; left: 23%; }
 #pin_vierwaldstaettersee  { top: 43%; left: 57%; }
