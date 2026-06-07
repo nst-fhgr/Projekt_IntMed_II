@@ -90,7 +90,6 @@ Wird für alle 10 Standorte (Flüsse + Seen) verwendet.
 ---
 
 ## Schwirigkeiten
-
 - Wassertemperatur für Seen nicht verfügbar (keine funktionierende öffentliche JSON-API gefunden)
 - Pin-Positionen auf der Karte sind in `%`-Werten definiert und müssen bei Kartenänderungen manuell in `style.css` angepasst werden
 - Responsivität Sonnenschirm: Der rein dekorativ Sonnenschirm im Header ist absolut positioniert und überlappt auf kleineren Bildschirmen die Karte. Das Problem wurde mit unterschiedlichen Grössen pro Breakpoint teilweise entschärft, ist aber nicht perfekt gelöst. Rückblickend wäre ein anderes Design sinnvoller gewesen oder eine Anzeige nur bei Desktop-Layout

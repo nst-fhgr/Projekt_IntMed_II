@@ -1,31 +1,30 @@
-
-/** FLÜSSE -- Api einbinden **/
+/**** FLÜSSE -- Api einbinden ****/
   // Daten für jeden Fluss 
   const fluesse = {
     rhone: {
       name: "Rhône",
       apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2009",
-      lat: 46.35, lon: 6.91 // Koordinaten für Meto API 
+      lat: 46.35, lon: 6.91
     },
     aare: {
       name: "Aare",
       apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2016", 
-      lat: 47.48, lon: 8.11 // Koordinaten für Meto API
+      lat: 47.48, lon: 8.11
     },
     linth: {
       name: "Linth",
       apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2104",
-      lat: 47.13, lon: 9.10 // Koordinaten für Meto API
+      lat: 47.13, lon: 9.10
     },
     reuss: {
       name: "Reuss",
       apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2018",
-      lat: 47.42, lon: 8.27 // Koordinaten für Meto API
+      lat: 47.42, lon: 8.27
     },
     rhein: {
       name: "Vorderrhein",
       apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2033",
-      lat: 46.77, lon: 9.21 // Koordinaten für Meto API
+      lat: 46.77, lon: 9.21
     }
   };
 
@@ -38,7 +37,6 @@
       const eintraege = data.payload;
       if (!eintraege || eintraege.length === 0) return null;
 
-      // Filter auf "temperature"
       const tempEintrag = eintraege.find(e => e.par === "temperature");
       if (!tempEintrag) return null;
 
@@ -67,37 +65,45 @@
   async function zeigeInfobox(flussKey) {
     const fluss = fluesse[flussKey];
     
-    // Platzhalter setzen während geladen wird
     document.getElementById("infobox_name").textContent = fluss.name;
     document.getElementById("grid_wassertemp").textContent = "…°C";
     document.getElementById("grid_lufttemp").textContent = "…";
     document.getElementById("infobox").style.display = "block";
 
-    // Temperaturen laden 
     const [wasserTemp, luftTemp] = await Promise.all([
       fetchWasserTemp(fluss.apiUrl),
       fetchLuftTemp(fluss.lat, fluss.lon)
     ]);
 
-    document.getElementById("grid_wassertemp").textContent = wasserTemp ? `${wasserTemp}°C` : "n/a";// Laden Wassertemp 
-    document.getElementById("grid_lufttemp").textContent = luftTemp ? `${luftTemp}°C` : "n/a"; // Laden Lufttemp
+    document.getElementById("grid_wassertemp").textContent = wasserTemp ? `${wasserTemp}°C` : "n/a";
+    document.getElementById("grid_lufttemp").textContent = luftTemp ? `${luftTemp}°C` : "n/a";
   }
 
 
   // Pins mit Klick-Events verbinden
-  document.getElementById("pin_rhone").addEventListener("click", () => zeigeInfobox("rhone"));
-  document.getElementById("pin_aare").addEventListener("click",  () => zeigeInfobox("aare"));
-  document.getElementById("pin_linth").addEventListener("click", () => zeigeInfobox("linth"));
-  document.getElementById("pin_reuss").addEventListener("click", () => zeigeInfobox("reuss"));
-  document.getElementById("pin_rhein").addEventListener("click", () => zeigeInfobox("rhein"));
+  document.getElementById("pin_rhone").addEventListener("click", async function() {
+    await zeigeInfobox("rhone");
+  });
+  document.getElementById("pin_aare").addEventListener("click", async function() {
+    await zeigeInfobox("aare");
+  });
+  document.getElementById("pin_linth").addEventListener("click", async function() {
+    await zeigeInfobox("linth");
+  });
+  document.getElementById("pin_reuss").addEventListener("click", async function() {
+    await zeigeInfobox("reuss");
+  });
+  document.getElementById("pin_rhein").addEventListener("click", async function() {
+    await zeigeInfobox("rhein");
+  });
 
   // Infobox schliessen
-  document.getElementById("infobox_close").addEventListener("click", () => {
-  document.getElementById("infobox").style.display = "none";
+  document.getElementById("infobox_close").addEventListener("click", function() {
+    document.getElementById("infobox").style.display = "none";
   });
 
 
-/** SEEN -- Api einbinden **/
+/**** SEEN -- Api einbinden ****/
 const seen = {
   genfersee: {
     name: "Genfersee",
@@ -105,7 +111,7 @@ const seen = {
     lat: 46.45, lon: 6.56
   },
   neuenburgersee: {
-    name: "Neuenburger-<br>see",
+    name: "Neuen-<br>burgersee",
     apiUrl: "https://api.existenz.ch/apiv1/hydro/latest?locations=2154",
     lat: 46.88, lon: 6.87
   },
@@ -126,56 +132,62 @@ const seen = {
   }
 };
 
- // Infobox anzeigen
-async function zeigeInfoboxSee(seeKey) {
-  const see = seen[seeKey];
+  // Infobox anzeigen
+  async function zeigeInfoboxSee(seeKey) {
+    const see = seen[seeKey];
 
-  document.getElementById("infobox_name").innerHTML      = see.name;
-  document.getElementById("grid_wassertemp").textContent = "…°C";
-  document.getElementById("grid_lufttemp").textContent   = "…°C";
-  document.getElementById("infobox").style.display       = "block";
+    document.getElementById("infobox_name").innerHTML      = see.name;
+    document.getElementById("grid_wassertemp").textContent = "…°C";
+    document.getElementById("grid_lufttemp").textContent   = "…°C";
+    document.getElementById("infobox").style.display       = "block";
 
-  // NEU: beide APIs gleichzeitig laden
-  const [wasserTemp, luftTemp] = await Promise.all([
-    fetchWasserTemp(see.apiUrl),
-    fetchLuftTemp(see.lat, see.lon)
-  ]);
+    const [wasserTemp, luftTemp] = await Promise.all([
+      fetchWasserTemp(see.apiUrl),
+      fetchLuftTemp(see.lat, see.lon)
+    ]);
 
-  document.getElementById("grid_wassertemp").textContent = wasserTemp ? `${wasserTemp}°C` : "-";
-  document.getElementById("grid_lufttemp").textContent   = luftTemp   ? `${luftTemp}°C`   : "n/a";
-}
+    document.getElementById("grid_wassertemp").textContent = wasserTemp ? `${wasserTemp}°C` : "-";
+    document.getElementById("grid_lufttemp").textContent   = luftTemp   ? `${luftTemp}°C`   : "n/a";
+  }
 
   // Seen Pins verbinden
-  document.getElementById("pin_genfersee").addEventListener("click",           () => zeigeInfoboxSee("genfersee"));
-  document.getElementById("pin_neuenburgersee").addEventListener("click",      () => zeigeInfoboxSee("neuenburgersee"));
-  document.getElementById("pin_vierwaldstaettersee").addEventListener("click", () => zeigeInfoboxSee("vierwaldstaettersee"));
-  document.getElementById("pin_lago_maggiore").addEventListener("click",       () => zeigeInfoboxSee("lago_maggiore"));
-  document.getElementById("pin_bodensee").addEventListener("click",            () => zeigeInfoboxSee("bodensee"));
+  document.getElementById("pin_genfersee").addEventListener("click", async function() {
+    await zeigeInfoboxSee("genfersee");
+  });
+  document.getElementById("pin_neuenburgersee").addEventListener("click", async function() {
+    await zeigeInfoboxSee("neuenburgersee");
+  });
+  document.getElementById("pin_vierwaldstaettersee").addEventListener("click", async function() {
+    await zeigeInfoboxSee("vierwaldstaettersee");
+  });
+  document.getElementById("pin_lago_maggiore").addEventListener("click", async function() {
+    await zeigeInfoboxSee("lago_maggiore");
+  });
+  document.getElementById("pin_bodensee").addEventListener("click", async function() {
+    await zeigeInfoboxSee("bodensee");
+  });
 
 
-//* Toogle *//
+//**** Toggle ****//
 const btnFluesse = document.getElementById("btn_fluesse");
 const btnSeen    = document.getElementById("btn_seen");
 
 function zeigePins(gruppe) {
-  // Infobox schliessen beim Wechsel//
-  document.getElementById("infobox").style.display = "none"; 
+  document.getElementById("infobox").style.display = "none";
 
-  // Beide Gruppen ausblenden // 
   document.getElementById("gruppe_fluesse").classList.remove("visible");
   document.getElementById("gruppe_seen").classList.remove("visible");
 
-  // Gewählte Gruppe einblenden // 
-  document.getElementById(`gruppe_${gruppe}`).classList.add("visible"); 
+  document.getElementById(`gruppe_${gruppe}`).classList.add("visible");
 }
 
-btnFluesse.addEventListener("click", () => {
+btnFluesse.addEventListener("click", function() {
   btnFluesse.classList.add("active");
   btnSeen.classList.remove("active");
   zeigePins("fluesse");
 });
 
-btnSeen.addEventListener("click", () => {
+btnSeen.addEventListener("click", function() {
   btnSeen.classList.add("active");
   btnFluesse.classList.remove("active");
   zeigePins("seen");
